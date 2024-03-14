@@ -1,31 +1,31 @@
 import { Component } from './components';
-import { Pet } from './data';
 
-export class Form extends Pet {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(id: number, name: string, specie: string) {
-    super(id, name, specie);
+export class Form extends Component {
+  id!: number;
+  name!: string;
+  specie!: string;
+  isAdopted!: true;
+
+  constructor(selector: string) {
+    super(selector);
+    this.template = this.createTemplate();
+    this.render();
   }
 
   createTemplate() {
     return `
-    <form class="pet form">
-    <label for="id">ID:</label><br>
-    <input type="text" id="id" name="id" required><br>
-    <label for="nombre">Nombre:</label><br>
-    <input type="text" id="nombre" name="nombre" required><br>
-    <label for="especie">Especie:</label><br>
-    <input type="text" id="especie" name="especie" required><br>
-    <label for="adoptado">¿Adoptado?</label><br>
-    <select id="adoptado" name="adoptado">
-        <option value="si">Sí</option>
-        <option value="no">No</option>
-    </select><br><br>
-    <button type="button" onclick="agregarMascota()">Añadir Mascota</button>
+    <form class="petForm">
+      <label for="name"> Nombre </label>
+      <input type="text" name="name" required>
+      <label for="specie">Specie:</label>
+      <input type="text" name="specie" required>
+      <label for="isAdopted"> ¿Es adoptado?</label>
+      <select name="isAdopted">
+          <option value="yes">Sí</option>
+          <option value="no">No</option>
+      </select>
+      <button type="button" onclick="addPet()">Añadir Mascota</button>
     </form>
-
-    <div id="mascotas-lista">
-    </div>
     `;
   }
 }

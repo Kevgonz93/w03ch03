@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export class Component {
   selector: string;
   template: string = '';
